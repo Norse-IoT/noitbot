@@ -27,7 +27,10 @@ def main():
     intents.message_content = True
     intents.members = True
     client = NIoTBot(intents=intents, command_prefix="/")
-    client.run(TOKEN)
+    if (TOKEN is None):
+        logging.warning("No Discord token present! The bot will now shut down.")
+    else:
+        client.run(TOKEN)
 
 
 if __name__ == "__main__":
